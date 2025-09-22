@@ -1,50 +1,53 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+- Version change: new → 1.0.0
+- New constitution created with focus on code simplicity and testing simplicity
+- Added sections: Core Principles (5), Code Quality Standards, Development Workflow
+- Templates requiring updates: ✅ constitution.md created
+- Follow-up TODOs: None
+-->
+
+# Expense Tracker Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Code Simplicity (NON-NEGOTIABLE)
+Every piece of code MUST follow the principle of simplicity first. Functions should do one thing well, modules should have clear single responsibilities, and complexity must be explicitly justified. No premature optimization or over-engineering is allowed. When in doubt, choose the simpler solution that solves the immediate problem.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+**Rationale**: Simple code is easier to understand, test, debug, and maintain. Complex solutions create technical debt and increase development time.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### II. Testing Simplicity  
+Tests MUST be simple, focused, and readable. Each test should verify one specific behavior. Test names must clearly describe what is being tested. Avoid complex test setups, mocking frameworks when simple stubs suffice, and testing implementation details instead of behavior.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+**Rationale**: Simple tests serve as living documentation and provide confidence in code changes. Complex tests are brittle and difficult to maintain.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### III. Test-First Development
+All new features and bug fixes MUST start with a failing test that demonstrates the expected behavior. The cycle is: Write test → Test fails → Write minimal code to pass → Refactor if needed. No code without tests, no tests without purpose.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+**Rationale**: Test-first development ensures we build what we need, prevents over-engineering, and provides immediate feedback on design decisions.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### IV. Clear Data Flow
+Data flow through the application MUST be explicit and traceable. Avoid hidden state mutations, implicit dependencies, and magic behavior. Functions should clearly indicate their inputs and outputs. State changes should be obvious and intentional.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+**Rationale**: Clear data flow makes the application predictable and debuggable, reducing the cognitive load for developers.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### V. Fail Fast and Obvious
+The application MUST fail quickly and clearly when something goes wrong. Error messages must be actionable and specific. Invalid states should be impossible to represent in the code. Use types and validation to prevent errors rather than handling them after they occur.
+
+**Rationale**: Fast, obvious failures reduce debugging time and prevent cascading issues that are harder to diagnose.
+
+## Code Quality Standards
+
+All code MUST pass automated quality checks including linting, formatting, and type checking before being committed. Code reviews focus on adherence to principles rather than style preferences. Performance optimizations require benchmarks and justification.
+
+## Development Workflow
+
+Every change follows the same process: Specification → Test → Implementation → Review → Integration. Breaking changes require explicit documentation and migration plans. All features must include user documentation and examples.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution supersedes all other development practices and guidelines. Violations must be justified in writing before proceeding. Amendments require review of impact on existing code and templates.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+All development decisions must be evaluated against these principles. When principles conflict, simplicity takes precedence. Complex solutions require explicit justification and approval.
+
+**Version**: 1.0.0 | **Ratified**: 2025-09-22 | **Last Amended**: 2025-09-22
